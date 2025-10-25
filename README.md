@@ -15,10 +15,10 @@
 ### ลิงค์ด่วนไปยังบทเรียน (Quick Links)
 
 **วันที่ 1:**
-[บทที่ 1](./day1/01-introduction/README.md) | [บทที่ 2](./day1/02-images/README.md) | [บทที่ 3](./day1/03-containers/README.md) | [บทที่ 4](./day1/04-volumes/README.md) | [บทที่ 5](./day1/05-networks/README.md)
+[แนะนำ Docker](./day1/01-introduction/README.md) | [Images](./day1/02-images/README.md) | [Containers](./day1/03-containers/README.md) | [Volumes](./day1/04-volumes/README.md) | [Networks](./day1/05-networks/README.md)
 
 **วันที่ 2:**
-[บทที่ 1](./day2/01-dockerfile-best-practices/README.md) | [บทที่ 2](./day2/02-docker-compose/README.md) | [บทที่ 3](./day2/03-real-world-apps/README.md) | [บทที่ 4](./day2/04-best-practices/README.md) | [บทที่ 5](./day2/05-troubleshooting/README.md)
+[Dockerfile Best Practices](./day2/01-dockerfile-best-practices/README.md) | [Docker Compose](./day2/02-docker-compose/README.md) | [Real-world Apps](./day2/03-real-world-apps/README.md) | [Best Practices](./day2/04-best-practices/README.md) | [Troubleshooting](./day2/05-troubleshooting/README.md)
 
 **ตัวอย่าง:**
 [Simple Web](./examples/simple-web/README.md) | [Node.js](./examples/node-app/README.md) | [Python Flask](./examples/python-app/README.md)
