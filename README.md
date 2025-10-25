@@ -1,130 +1,138 @@
-# Docker 2 Days Training Course
+# คอร์สเรียน Docker 2 วัน
 
-Welcome to the Basic Docker for Developer 2-Day Training Course! This repository contains all the materials, examples, and exercises for learning Docker fundamentals.
+ยินดีต้อนรับสู่คอร์สเรียน Docker พื้นฐานสำหรับนักพัฒนา 2 วัน! Repository นี้มีเนื้อหาการเรียนรู้ ตัวอย่างโค้ด และแบบฝึกหัดทั้งหมดสำหรับการเรียนรู้พื้นฐาน Docker
 
-## Course Overview
+## ภาพรวมคอร์ส
 
-This is a hands-on 2-day course designed to teach developers the fundamentals of Docker and containerization. By the end of this course, you will be able to:
+คอร์สนี้เป็นคอร์สเชิงปฏิบัติ 2 วันที่ออกแบบมาเพื่อสอนนักพัฒนาเกี่ยวกับพื้นฐาน Docker และการทำ Containerization เมื่อจบคอร์สแล้ว คุณจะสามารถ:
 
-- Understand Docker concepts and architecture
-- Build and manage Docker images
-- Run and manage Docker containers
-- Work with Docker volumes and networks
-- Use Docker Compose for multi-container applications
-- Apply Docker best practices
+- เข้าใจแนวคิดและสถาปัตยกรรมของ Docker
+- สร้างและจัดการ Docker images
+- รันและจัดการ Docker containers
+- ทำงานกับ Docker volumes และ networks
+- ใช้ Docker Compose สำหรับแอปพลิเคชันหลาย container
+- ประยุกต์ใช้ best practices ของ Docker
 
-## Prerequisites
+## สิ่งที่ต้องมีก่อนเรียน
 
-- Basic understanding of Linux command line
-- Familiarity with software development concepts
-- A computer with Docker installed
+- ความเข้าใจพื้นฐานของ Linux command line
+- ความคุ้นเคยกับแนวคิดการพัฒนาซอฟต์แวร์
+- คอมพิวเตอร์ที่ติดตั้ง Docker แล้ว
 
-## Installing Docker
+## การติดตั้ง Docker
 
-### Docker Desktop (Windows/Mac)
-Download and install Docker Desktop from: https://www.docker.com/products/docker-desktop
+### ขั้นตอนที่ 1: ติดตั้ง Docker Desktop (Windows/Mac)
+ดาวน์โหลดและติดตั้ง Docker Desktop จาก: https://www.docker.com/products/docker-desktop
 
-### Docker Engine (Linux)
+### ขั้นตอนที่ 2: ติดตั้ง Docker Engine (Linux)
 ```bash
 curl -fsSL https://get.docker.com -o get-docker.sh
 sudo sh get-docker.sh
 ```
 
-Verify installation:
+### ขั้นตอนที่ 3: ตรวจสอบการติดตั้ง
 ```bash
 docker --version
 docker run hello-world
 ```
 
-## Course Structure
+## โครงสร้างคอร์ส
 
-### Day 1: Docker Basics
-1. **Introduction to Docker** (`day1/01-introduction/`)
-   - What is Docker?
-   - Docker vs Virtual Machines
-   - Docker architecture and components
+### วันที่ 1: Docker พื้นฐาน
 
-2. **Docker Images** (`day1/02-images/`)
-   - Understanding Docker images
-   - Working with Docker Hub
-   - Creating your first Dockerfile
-   - Building images
+#### บทที่ 1: แนะนำ Docker (`day1/01-introduction/`)
+**ขั้นตอนการเรียนรู้:**
+- ขั้นที่ 1: ทำความเข้าใจว่า Docker คืออะไร
+- ขั้นที่ 2: เปรียบเทียบ Docker กับ Virtual Machines
+- ขั้นที่ 3: ศึกษาสถาปัตยกรรมและส่วนประกอบของ Docker
 
-3. **Docker Containers** (`day1/03-containers/`)
-   - Running containers
-   - Container lifecycle
-   - Managing containers
-   - Container logs and debugging
+#### บทที่ 2: Docker Images (`day1/02-images/`)
+**ขั้นตอนการเรียนรู้:**
+- ขั้นที่ 1: ทำความเข้าใจ Docker images
+- ขั้นที่ 2: ทำงานกับ Docker Hub
+- ขั้นที่ 3: สร้าง Dockerfile แรกของคุณ
+- ขั้นที่ 4: Build images
 
-4. **Docker Volumes** (`day1/04-volumes/`)
-   - Data persistence in Docker
-   - Volume types and management
-   - Bind mounts vs volumes
+#### บทที่ 3: Docker Containers (`day1/03-containers/`)
+**ขั้นตอนการเรียนรู้:**
+- ขั้นที่ 1: รัน containers
+- ขั้นที่ 2: เรียนรู้ lifecycle ของ container
+- ขั้นที่ 3: จัดการ containers
+- ขั้นที่ 4: ดู logs และ debug containers
 
-5. **Docker Networks** (`day1/05-networks/`)
-   - Container networking basics
-   - Network types
-   - Container communication
+#### บทที่ 4: Docker Volumes (`day1/04-volumes/`)
+**ขั้นตอนการเรียนรู้:**
+- ขั้นที่ 1: ทำความเข้าใจการเก็บข้อมูลถาวรใน Docker
+- ขั้นที่ 2: ศึกษาประเภทและการจัดการ volumes
+- ขั้นที่ 3: เปรียบเทียบ bind mounts กับ volumes
 
-### Day 2: Advanced Docker
-1. **Dockerfile Best Practices** (`day2/01-dockerfile-best-practices/`)
-   - Multi-stage builds
-   - Layer optimization
-   - Security considerations
+#### บทที่ 5: Docker Networks (`day1/05-networks/`)
+**ขั้นตอนการเรียนรู้:**
+- ขั้นที่ 1: เรียนรู้พื้นฐาน container networking
+- ขั้นที่ 2: ศึกษาประเภทของ network
+- ขั้นที่ 3: ทำให้ containers สื่อสารกันได้
 
-2. **Docker Compose** (`day2/02-docker-compose/`)
-   - Introduction to Docker Compose
-   - YAML syntax
-   - Multi-container applications
-   - Service orchestration
+### วันที่ 2: Docker ขั้นสูง
 
-3. **Real-World Applications** (`day2/03-real-world-apps/`)
-   - Web application with database
-   - Microservices example
-   - Development workflow
+#### บทที่ 1: Dockerfile Best Practices (`day2/01-dockerfile-best-practices/`)
+**ขั้นตอนการเรียนรู้:**
+- ขั้นที่ 1: เรียนรู้ multi-stage builds
+- ขั้นที่ 2: ปรับปรุง layer optimization
+- ขั้นที่ 3: คำนึงถึงด้านความปลอดภัย
 
-4. **Docker Best Practices** (`day2/04-best-practices/`)
-   - Image optimization
-   - Security best practices
-   - Production considerations
+#### บทที่ 2: Docker Compose (`day2/02-docker-compose/`)
+**ขั้นตอนการเรียนรู้:**
+- ขั้นที่ 1: แนะนำ Docker Compose
+- ขั้นที่ 2: เรียนรู้ YAML syntax
+- ขั้นที่ 3: สร้างแอปพลิเคชันหลาย containers
+- ขั้นที่ 4: จัดการ service orchestration
 
-5. **Troubleshooting** (`day2/05-troubleshooting/`)
-   - Common issues and solutions
-   - Debugging techniques
-   - Performance optimization
+#### บทที่ 3: แอปพลิเคชันจริง (`day2/03-real-world-apps/`)
+**ขั้นตอนการเรียนรู้:**
+- ขั้นที่ 1: สร้าง web application พร้อม database
+- ขั้นที่ 2: ศึกษาตัวอย่าง microservices
+- ขั้นที่ 3: เรียนรู้ development workflow
 
-## Quick Start
+#### บทที่ 4: Docker Best Practices (`day2/04-best-practices/`)
+**ขั้นตอนการเรียนรู้:**
+- ขั้นที่ 1: ปรับปรุง image ให้มีประสิทธิภาพ
+- ขั้นที่ 2: ใช้ security best practices
+- ขั้นที่ 3: พิจารณาสำหรับ production
 
-### Day 1 Labs
+#### บทที่ 5: การแก้ปัญหา (`day2/05-troubleshooting/`)
+**ขั้นตอนการเรียนรู้:**
+- ขั้นที่ 1: เรียนรู้ปัญหาทั่วไปและวิธีแก้ไข
+- ขั้นที่ 2: เทคนิคการ debug
+- ขั้นที่ 3: ปรับปรุงประสิทธิภาพ
+
+## เริ่มต้นอย่างรวดเร็ว
+
+### แบบฝึกหัดวันที่ 1
 ```bash
 cd day1
-# Follow the exercises in each subdirectory
+# ทำตามแบบฝึกหัดในแต่ละ subdirectory
 ```
 
-### Day 2 Labs
+### แบบฝึกหัดวันที่ 2
 ```bash
 cd day2
-# Follow the exercises in each subdirectory
+# ทำตามแบบฝึกหัดในแต่ละ subdirectory
 ```
 
-## Additional Resources
+## แหล่งข้อมูลเพิ่มเติม
 
-- Official Docker Documentation: https://docs.docker.com
+- เอกสาร Docker อย่างเป็นทางการ: https://docs.docker.com
 - Docker Hub: https://hub.docker.com
 - Docker Cheat Sheet: `./resources/docker-cheatsheet.md`
 
-## Course Reference
+## ลิขสิทธิ์
 
-This course is based on: https://www.itgenius.co.th/online-courses/basic-docker-for-developer-2026.html
+Repository นี้สำหรับวัตถุประสงค์ทางการศึกษา
 
-## License
+## การสนับสนุน
 
-This repository is for educational purposes.
-
-## Support
-
-If you have questions or issues, please open an issue in this repository.
+หากคุณมีคำถามหรือปัญหา กรุณาเปิด issue ใน repository นี้
 
 ---
 
-Happy Learning! 🐳
+สนุกกับการเรียนรู้! 🐳
