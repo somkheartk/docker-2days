@@ -1,24 +1,24 @@
-# Day 1 - Introduction to Docker
+# วันที่ 1 - แนะนำ Docker
 
-## What is Docker?
+## Docker คืออะไร?
 
-Docker is a platform for developing, shipping, and running applications in containers. Containers allow you to package an application with all of its dependencies into a standardized unit for software development.
+Docker เป็นแพลตฟอร์มสำหรับการพัฒนา จัดส่ง และรันแอปพลิเคชันใน containers โดย Containers ช่วยให้คุณสามารถแพ็คเกจแอปพลิเคชันพร้อมกับ dependencies ทั้งหมดไปสู่หน่วยมาตรฐานสำหรับการพัฒนาซอฟต์แวร์
 
-## Key Concepts
+## แนวคิดหลัก
 
-### Containers vs Virtual Machines
+### Containers เทียบกับ Virtual Machines
 
 **Virtual Machines:**
-- Run on a hypervisor
-- Each VM includes a full OS
-- Heavy resource usage
-- Slower startup times (minutes)
+- รันบน hypervisor
+- แต่ละ VM มี OS เต็มรูปแบบ
+- ใช้ resources มาก
+- เวลา startup ช้า (หลายนาที)
 
 **Containers:**
-- Run on the Docker Engine
-- Share the host OS kernel
-- Lightweight resource usage
-- Fast startup times (seconds)
+- รันบน Docker Engine
+- แชร์ kernel ของ host OS
+- ใช้ resources น้อย
+- เวลา startup เร็ว (หลายวินาที)
 
 ```
 ┌─────────────────────────────────────────┐
@@ -52,89 +52,90 @@ Docker is a platform for developing, shipping, and running applications in conta
 └─────────────────────────────────────────┘
 ```
 
-## Docker Architecture
+## สถาปัตยกรรม Docker
 
-Docker uses a client-server architecture:
+Docker ใช้สถาปัตยกรรมแบบ client-server:
 
 1. **Docker Client** - Command-line interface (CLI)
-2. **Docker Daemon** - Background service managing containers
-3. **Docker Registry** - Storage for Docker images (e.g., Docker Hub)
+2. **Docker Daemon** - Background service ที่จัดการ containers
+3. **Docker Registry** - ที่เก็บข้อมูล Docker images (เช่น Docker Hub)
 
-### Key Components:
+### ส่วนประกอบหลัก:
 
-- **Image**: Read-only template with instructions for creating a container
-- **Container**: Runnable instance of an image
-- **Dockerfile**: Text file with instructions to build an image
-- **Registry**: Repository for storing and distributing images
-- **Volume**: Persistent storage for container data
-- **Network**: Communication between containers
+- **Image**: Template แบบอ่านอย่างเดียวที่มีคำสั่งสำหรับการสร้าง container
+- **Container**: Instance ของ image ที่สามารถรันได้
+- **Dockerfile**: ไฟล์ text ที่มีคำสั่งสำหรับ build image
+- **Registry**: Repository สำหรับเก็บและแจกจ่าย images
+- **Volume**: ที่เก็บข้อมูลถาวรสำหรับข้อมูล container
+- **Network**: การสื่อสารระหว่าง containers
 
-## Basic Docker Commands
+## คำสั่ง Docker พื้นฐาน
 
-Check Docker version:
+### ขั้นตอนที่ 1: ตรวจสอบเวอร์ชัน Docker
 ```bash
 docker --version
 docker version
 docker info
 ```
 
-## Exercise 1: Hello World
+## แบบฝึกหัดที่ 1: Hello World
 
-Run your first container:
+### ขั้นตอนที่ 1: รัน container แรกของคุณ
 ```bash
 docker run hello-world
 ```
 
-What happened?
-1. Docker client contacted Docker daemon
-2. Docker daemon pulled the "hello-world" image from Docker Hub
-3. Docker daemon created a new container from that image
-4. Docker daemon streamed the output to Docker client
+### ขั้นตอนที่ 2: ทำความเข้าใจสิ่งที่เกิดขึ้น
+เกิดอะไรขึ้น?
+1. Docker client ติดต่อ Docker daemon
+2. Docker daemon ดึง image "hello-world" จาก Docker Hub
+3. Docker daemon สร้าง container ใหม่จาก image นั้น
+4. Docker daemon ส่ง output ไปยัง Docker client
 
-## Exercise 2: Interactive Container
+## แบบฝึกหัดที่ 2: Interactive Container
 
-Run an interactive Ubuntu container:
+### ขั้นตอนที่ 1: รัน Ubuntu container แบบ interactive
 ```bash
 docker run -it ubuntu bash
 ```
 
-Inside the container, try:
+### ขั้นตอนที่ 2: ลองคำสั่งต่างๆ ภายใน container
 ```bash
 cat /etc/os-release
 ls /
 exit
 ```
 
-## Exercise 3: List Containers
+## แบบฝึกหัดที่ 3: แสดงรายการ Containers
 
-List running containers:
+### ขั้นตอนที่ 1: แสดง containers ที่กำลังรัน
 ```bash
 docker ps
 ```
 
-List all containers (including stopped):
+### ขั้นตอนที่ 2: แสดง containers ทั้งหมด (รวมที่หยุดแล้ว)
 ```bash
 docker ps -a
 ```
 
-## Benefits of Docker
+## ประโยชน์ของ Docker
 
-1. **Consistency**: Same environment from development to production
-2. **Isolation**: Applications run in isolated environments
-3. **Portability**: Run anywhere Docker is installed
-4. **Efficiency**: Share system resources efficiently
-5. **Speed**: Fast startup and deployment
-6. **Version Control**: Track image versions easily
+1. **ความสม่ำเสมอ (Consistency)**: สภาพแวดล้อมเดียวกันตั้งแต่การพัฒนาจนถึง production
+2. **การแยกส่วน (Isolation)**: แอปพลิเคชันรันในสภาพแวดล้อมที่แยกออกจากกัน
+3. **พกพาสะดวก (Portability)**: รันได้ทุกที่ที่ติดตั้ง Docker
+4. **ประสิทธิภาพ (Efficiency)**: แชร์ resources ของระบบอย่างมีประสิทธิภาพ
+5. **ความเร็ว (Speed)**: startup และ deployment เร็ว
+6. **Version Control**: ติดตามเวอร์ชัน image ได้ง่าย
 
-## Common Use Cases
+## กรณีการใช้งานทั่วไป
 
-- Microservices architecture
-- Development environments
+- สถาปัตยกรรม Microservices
+- สภาพแวดล้อมการพัฒนา
 - Continuous Integration/Continuous Deployment (CI/CD)
-- Application isolation
-- Legacy application modernization
-- Multi-tenancy applications
+- การแยกแอปพลิเคชัน
+- การปรับปรุงแอปพลิเคชันเก่า
+- แอปพลิเคชันแบบ multi-tenancy
 
-## Next Steps
+## ขั้นตอนถัดไป
 
-Continue to [Docker Images](../02-images/README.md) to learn how to work with Docker images.
+ไปต่อที่ [Docker Images](../02-images/README.md) เพื่อเรียนรู้วิธีการทำงานกับ Docker images

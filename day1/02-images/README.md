@@ -1,93 +1,92 @@
-# Day 1 - Docker Images
+# วันที่ 1 - Docker Images
 
-## What is a Docker Image?
+## Docker Image คืออะไร?
 
-A Docker image is a read-only template that contains:
-- Application code
+Docker image เป็น template แบบอ่านอย่างเดียวที่ประกอบด้วย:
+- โค้ดแอปพลิเคชัน
 - Runtime environment
 - System tools
 - Libraries
-- Settings
+- การตั้งค่า
 
-Images are built from instructions in a Dockerfile and stored in registries like Docker Hub.
+Images ถูก build จากคำสั่งใน Dockerfile และเก็บไว้ใน registries เช่น Docker Hub
 
-## Working with Docker Hub
+## การทำงานกับ Docker Hub
 
-Docker Hub is the default public registry for Docker images.
+Docker Hub เป็น public registry เริ่มต้นสำหรับ Docker images
 
-### Searching for Images
+### ขั้นตอนที่ 1: ค้นหา Images
 
-Search on Docker Hub:
+ค้นหาบน Docker Hub:
 ```bash
 docker search nginx
 docker search ubuntu
 ```
 
-Or visit: https://hub.docker.com
+หรือเยี่ยมชม: https://hub.docker.com
 
-### Pulling Images
+### ขั้นตอนที่ 2: ดาวน์โหลด Images
 
-Download an image from Docker Hub:
+ดาวน์โหลด image จาก Docker Hub:
 ```bash
 docker pull nginx
 docker pull nginx:1.21
 docker pull ubuntu:22.04
 ```
 
-Without specifying a tag, Docker pulls the `latest` tag.
+หากไม่ระบุ tag Docker จะดึง tag `latest`
 
-### Listing Local Images
+### ขั้นตอนที่ 3: แสดงรายการ Images ในเครื่อง
 
-View downloaded images:
+ดู images ที่ดาวน์โหลดแล้ว:
 ```bash
 docker images
 docker image ls
 ```
 
-## Image Tags and Versions
+## Image Tags และ Versions
 
-Images use tags to specify versions:
+Images ใช้ tags เพื่อระบุเวอร์ชัน:
 ```bash
-docker pull nginx:1.21.0       # Specific version
+docker pull nginx:1.21.0       # เวอร์ชันเฉพาะ
 docker pull nginx:1.21         # Minor version
-docker pull nginx:latest       # Latest version
+docker pull nginx:latest       # เวอร์ชันล่าสุด
 docker pull nginx:alpine       # Alpine Linux variant
 ```
 
-## Exercise 1: Explore Images
+## แบบฝึกหัดที่ 1: สำรวจ Images
 
-Pull different versions:
+### ขั้นตอนที่ 1: ดาวน์โหลดเวอร์ชันต่างๆ
 ```bash
 docker pull nginx:alpine
 docker pull nginx:latest
 docker images | grep nginx
 ```
 
-Inspect an image:
+### ขั้นตอนที่ 2: ตรวจสอบ image
 ```bash
 docker image inspect nginx:alpine
 ```
 
-## Understanding Dockerfile
+## ทำความเข้าใจ Dockerfile
 
-A Dockerfile is a text file with instructions to build a Docker image.
+Dockerfile เป็นไฟล์ text ที่มีคำสั่งสำหรับ build Docker image
 
-### Basic Dockerfile Instructions
+### คำสั่ง Dockerfile พื้นฐาน
 
 - `FROM`: Base image
-- `RUN`: Execute commands
-- `COPY`: Copy files from host to image
-- `ADD`: Similar to COPY, but can extract archives
-- `WORKDIR`: Set working directory
-- `ENV`: Set environment variables
-- `EXPOSE`: Document which ports the container listens on
-- `CMD`: Default command to run
-- `ENTRYPOINT`: Configure container as executable
+- `RUN`: รันคำสั่ง
+- `COPY`: คัดลอกไฟล์จาก host ไปยัง image
+- `ADD`: คล้าย COPY แต่สามารถแตกไฟล์บีบอัดได้
+- `WORKDIR`: ตั้งค่า working directory
+- `ENV`: ตั้งค่า environment variables
+- `EXPOSE`: ระบุ ports ที่ container จะ listen
+- `CMD`: คำสั่งเริ่มต้นที่จะรัน
+- `ENTRYPOINT`: ตั้งค่า container ให้เป็น executable
 
-## Exercise 2: Your First Dockerfile
+## แบบฝึกหัดที่ 2: Dockerfile แรกของคุณ
 
-Create a simple web application:
-
+### ขั้นตอนที่ 1: สร้างไฟล์ app.html
 **app.html**
 ```html
 <!DOCTYPE html>
@@ -96,12 +95,13 @@ Create a simple web application:
     <title>My Docker App</title>
 </head>
 <body>
-    <h1>Hello from Docker!</h1>
-    <p>This is my first containerized application.</p>
+    <h1>สวัสดีจาก Docker!</h1>
+    <p>นี่คือแอปพลิเคชันที่ containerized แรกของฉัน</p>
 </body>
 </html>
 ```
 
+### ขั้นตอนที่ 2: สร้าง Dockerfile
 **Dockerfile**
 ```dockerfile
 FROM nginx:alpine
@@ -109,20 +109,22 @@ COPY app.html /usr/share/nginx/html/index.html
 EXPOSE 80
 ```
 
-Build the image:
+### ขั้นตอนที่ 3: Build image
 ```bash
 docker build -t my-web-app:v1 .
 ```
 
-Run the container:
+### ขั้นตอนที่ 4: รัน container
 ```bash
 docker run -d -p 8080:80 my-web-app:v1
 ```
 
-Visit: http://localhost:8080
+### ขั้นตอนที่ 5: ทดสอบ
+เยี่ยมชม: http://localhost:8080
 
-## Exercise 3: Node.js Application
+## แบบฝึกหัดที่ 3: แอปพลิเคชัน Node.js
 
+### ขั้นตอนที่ 1: สร้างไฟล์ app.js
 **app.js**
 ```javascript
 const http = require('http');
@@ -133,7 +135,7 @@ const port = 3000;
 const server = http.createServer((req, res) => {
   res.statusCode = 200;
   res.setHeader('Content-Type', 'text/plain');
-  res.end('Hello from Node.js Docker Container!\n');
+  res.end('สวัสดีจาก Node.js Docker Container!\n');
 });
 
 server.listen(port, hostname, () => {
@@ -141,6 +143,7 @@ server.listen(port, hostname, () => {
 });
 ```
 
+### ขั้นตอนที่ 2: สร้าง Dockerfile
 **Dockerfile**
 ```dockerfile
 FROM node:18-alpine
@@ -150,7 +153,7 @@ EXPOSE 3000
 CMD ["node", "app.js"]
 ```
 
-Build and run:
+### ขั้นตอนที่ 3: Build และรัน
 ```bash
 docker build -t my-node-app .
 docker run -d -p 3000:3000 my-node-app
@@ -159,78 +162,80 @@ curl http://localhost:3000
 
 ## Image Layers
 
-Docker images are built in layers. Each instruction in a Dockerfile creates a layer.
+Docker images ถูก build เป็น layers โดยแต่ละคำสั่งใน Dockerfile จะสร้าง layer
 
-View image history:
+### ขั้นตอนที่ 1: ดู image history
 ```bash
 docker history nginx:alpine
 ```
 
-Layers are cached and reused to speed up builds.
+Layers ถูก cache และนำกลับมาใช้ใหม่เพื่อเพิ่มความเร็วในการ build
 
-## Managing Images
+## การจัดการ Images
 
-Remove an image:
+### ขั้นตอนที่ 1: ลบ image
 ```bash
 docker rmi nginx:alpine
 docker image rm my-web-app:v1
 ```
 
-Remove unused images:
+### ขั้นตอนที่ 2: ลบ images ที่ไม่ได้ใช้
 ```bash
 docker image prune
-docker image prune -a  # Remove all unused images
+docker image prune -a  # ลบ images ทั้งหมดที่ไม่ได้ใช้
 ```
 
-Tag an image:
+### ขั้นตอนที่ 3: ติด tag ให้ image
 ```bash
 docker tag my-web-app:v1 my-web-app:latest
 docker tag my-web-app:v1 myusername/my-web-app:v1
 ```
 
-## Exercise 4: Multi-Layer Build
+## แบบฝึกหัดที่ 4: Multi-Layer Build
 
+### ขั้นตอนที่ 1: สร้าง Dockerfile แบบหลาย layers
 **Dockerfile**
 ```dockerfile
 FROM ubuntu:22.04
 
-# Layer 1: Update package list
+# Layer 1: อัปเดตรายการ package
 RUN apt-get update
 
-# Layer 2: Install packages
+# Layer 2: ติดตั้ง packages
 RUN apt-get install -y curl vim
 
-# Layer 3: Create directory
+# Layer 3: สร้าง directory
 RUN mkdir -p /app/data
 
-# Layer 4: Set working directory
+# Layer 4: ตั้งค่า working directory
 WORKDIR /app
 
-# Layer 5: Add metadata
+# Layer 5: เพิ่ม metadata
 ENV APP_VERSION=1.0
 
-# Default command
+# คำสั่งเริ่มต้น
 CMD ["bash"]
 ```
 
-Build and examine:
+### ขั้นตอนที่ 2: Build และตรวจสอบ
 ```bash
 docker build -t multi-layer-demo .
 docker history multi-layer-demo
 ```
 
-## Best Practices for Images
+## Best Practices สำหรับ Images
 
-1. Use official base images
-2. Use specific image tags (not `latest`)
-3. Minimize the number of layers
-4. Remove unnecessary files
-5. Use `.dockerignore` file
-6. Don't store secrets in images
+1. ใช้ official base images
+2. ใช้ image tags ที่เฉพาะเจาะจง (ไม่ใช่ `latest`)
+3. ลดจำนวน layers ให้น้อยที่สุด
+4. ลบไฟล์ที่ไม่จำเป็น
+5. ใช้ไฟล์ `.dockerignore`
+6. อย่าเก็บ secrets ใน images
 
-## .dockerignore File
+## ไฟล์ .dockerignore
 
-Create a `.dockerignore` file to exclude files from the build context:
+### ขั้นตอนที่ 1: สร้างไฟล์ .dockerignore
+สร้างไฟล์ `.dockerignore` เพื่อแยกไฟล์ออกจาก build context:
 
 ```
 node_modules
@@ -242,6 +247,6 @@ README.md
 *.md
 ```
 
-## Next Steps
+## ขั้นตอนถัดไป
 
-Continue to [Docker Containers](../03-containers/README.md) to learn how to manage running containers.
+ไปต่อที่ [Docker Containers](../03-containers/README.md) เพื่อเรียนรู้วิธีการจัดการ containers ที่กำลังรัน
