@@ -1,39 +1,39 @@
-# Python Flask App Example
+# ตัวอย่าง Python Flask App
 
-A simple Python Flask application running in Docker with Gunicorn.
+แอปพลิเคชัน Python Flask แบบง่ายที่รันใน Docker ด้วย Gunicorn
 
-## Build the image
+## ขั้นตอนที่ 1: Build image
 
 ```bash
 docker build -t python-app .
 ```
 
-## Run the container
+## ขั้นตอนที่ 2: รัน container
 
 ```bash
 docker run -d -p 5000:5000 --name my-python-app python-app
 ```
 
-## Test the application
+## ขั้นตอนที่ 3: ทดสอบแอปพลิเคชัน
 
 ```bash
 curl http://localhost:5000
 curl http://localhost:5000/health
 ```
 
-## View logs
+## ขั้นตอนที่ 4: ดู logs
 
 ```bash
 docker logs -f my-python-app
 ```
 
-## Development mode
+## โหมดพัฒนา
 
 ```bash
 docker run -d -p 5000:5000 -v $(pwd):/app -e FLASK_ENV=development --name python-dev python-app flask run --host=0.0.0.0
 ```
 
-## Stop and remove
+## หยุดและลบ
 
 ```bash
 docker stop my-python-app

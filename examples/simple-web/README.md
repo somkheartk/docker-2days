@@ -1,24 +1,24 @@
-# Simple Web App Example
+# ตัวอย่าง Web App แบบง่าย
 
-This is a basic example of running a static website with Docker.
+นี่คือตัวอย่างพื้นฐานของการรันเว็บไซต์แบบคงที่ด้วย Docker
 
-## Build the image
+## ขั้นตอนที่ 1: Build image
 
 ```bash
 docker build -t simple-web .
 ```
 
-## Run the container
+## ขั้นตอนที่ 2: รัน container
 
 ```bash
 docker run -d -p 8080:80 --name my-web-app simple-web
 ```
 
-## Access the application
+## ขั้นตอนที่ 3: เข้าถึงแอปพลิเคชัน
 
-Open your browser and visit: http://localhost:8080
+เปิดเบราว์เซอร์และไปที่: http://localhost:8080
 
-## Stop and remove
+## ขั้นตอนที่ 4: หยุดและลบ
 
 ```bash
 docker stop my-web-app
