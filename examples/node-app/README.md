@@ -1,39 +1,39 @@
-# Node.js App Example
+# ตัวอย่าง Node.js App
 
-A simple Node.js Express application running in Docker.
+แอปพลิเคชัน Node.js Express แบบง่ายที่รันใน Docker
 
-## Build the image
+## ขั้นตอนที่ 1: Build image
 
 ```bash
 docker build -t node-app .
 ```
 
-## Run the container
+## ขั้นตอนที่ 2: รัน container
 
 ```bash
 docker run -d -p 3000:3000 --name my-node-app node-app
 ```
 
-## Test the application
+## ขั้นตอนที่ 3: ทดสอบแอปพลิเคชัน
 
 ```bash
 curl http://localhost:3000
 curl http://localhost:3000/health
 ```
 
-## View logs
+## ขั้นตอนที่ 4: ดู logs
 
 ```bash
 docker logs -f my-node-app
 ```
 
-## Development mode with volume mount
+## โหมดพัฒนาด้วย volume mount
 
 ```bash
 docker run -d -p 3000:3000 -v $(pwd):/app -v /app/node_modules --name node-dev node-app npm run dev
 ```
 
-## Stop and remove
+## หยุดและลบ
 
 ```bash
 docker stop my-node-app
